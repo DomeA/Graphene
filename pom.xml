@@ -18,6 +18,7 @@
         <module>servers/cloud-tool/config-server</module>
         <module>servers/cloud-tool/discovery-server</module>
         <module>servers/cloud-tool/monitor-server</module>
+        <module>servers/micro-service/gis-process</module>
     </modules>
 
     <dependencyManagement>
