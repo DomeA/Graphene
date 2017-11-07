@@ -32,7 +32,7 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.domeastudio.mappingo.servers.microservice.p2pamqp.rest"))
+                .apis(RequestHandlerSelectors.basePackage("com.domeastudio.mappingo.servers.microservice.amqp.rest"))
                 .paths(PathSelectors.any())
                 .build();
     }
