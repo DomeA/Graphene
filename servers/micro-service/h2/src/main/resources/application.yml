@@ -20,7 +20,7 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:h2:file:/home/domea/myProject/project2017/treasure/Nebula/code/Leo/mappingo/dbfile/systemdb
+    url: jdbc:h2:file:/home/domea/myProject/project2017/Graphene/dbfile/systemdb
     username: sa
     password: sa
     driver-class-name: org.h2.Driver
