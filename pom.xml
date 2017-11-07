@@ -21,6 +21,7 @@
         <module>servers/micro-service/gis-process</module>
         <module>servers/micro-service/h2</module>
         <module>servers/micro-service/postgresql</module>
+        <module>servers/micro-service/amqp</module>
     </modules>
 
     <dependencyManagement>

@@ -1,0 +1,60 @@
+spring:
+  profiles:
+    #选择使用下面哪个配置项
+    active: devProfile
+   #服务配置信息
+  cloud:
+    config:
+      #此处的config.profile会根据生效的active设置对应的值
+      profile: ${config.profile}
+      name: application
+      uri: http://localhost:8888
+      label: master
+      discovery:
+        service-id: configServer
+        enabled: true
+      enabled: true
+  rabbitmq:
+    addresses: localhost
+    port: 5672
+    username: domea
+    password: domea
+    virtual-host: /
+    publisher-confirms: true
+    exchangesAndQueues:
+      fanout-A-Message: userQueue,micQueue,topic-MessageQueue
+    exchangesAndRoutingKeys:
+      fanout-A-Message: userQueue
+    queueNames:
+      userQueue: false
+      micQueue: true
+      topic-MessageQueue: false
+    topicExchanges:
+      topic-Message: false,false
+      topic-Log: true,false
+    fanoutExchanges:
+      fanout-A-Message: false,true
+      fanout-B-Message: true,true
+    directExchanges:
+      direct-A-Message: false,false
+      direct-B-Message: true,true
+    headersExchanges:
+      proccess: true,true
+#将不同的配置组以---分割，并通过spring.profiles定义每组的名字，方便后续引用
+---
+spring:
+  profiles: testProfile
+config:
+  profile: test
+
+---
+spring:
+  profiles: devProfile
+config:
+  profile: dev
+
+---
+spring:
+  profiles: prodProfile
+config:
+  profile: prod
