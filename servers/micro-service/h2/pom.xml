@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mappingo</artifactId>
+        <groupId>com.domeastudio</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../../../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>h2</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.196</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>h2</finalName>
+        <plugins>
+            <plugin>
+                <groupId>com.github.kongchen</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <version>3.1.5</version>
+                <configuration>
+                    <apiSources>
+                        <apiSource>
+                            <springmvc>false</springmvc> <!-- false为JAX-RS -->
+                            <locations>com.rooyeetone.rtprest.rest</locations>
+                            <schemes>http</schemes>
+                            <!--<schemes>http,https</schemes>-->
+                            <host>petstore.swagger.wordnik.com</host>
+                            <basePath>/rtprest/rest</basePath>
+                            <info>
+                                <title>RTP REST APIs</title>
+                                <version>v1</version>
+                                <description>This is a sample for swagger-maven-plugin</description>
+                                <contact>
+                                    <email>domeastudio@gmail.com</email>
+                                    <name>DomeA</name>
+                                    <url>http://www.domeastudio.com</url>
+                                </contact>
+                                <license>
+                                    <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+                                    <name>Apache 2.0</name>
+                                </license>
+                            </info>
+                            <templatePath>${basedir}/src/main/resources/templates/strapdown.html.hbs</templatePath>
+                            <outputPath>${basedir}/src/main/resources/generated/document.html</outputPath>
+                            <swaggerDirectory>${basedir}/src/main/resources/generated/swagger-ui</swaggerDirectory>
+                            <!--<attachSwaggerArtifact>true</attachSwaggerArtifact> -->
+                            <!--<jsonExampleValues>true</jsonExampleValues> -->
+                        </apiSource>
+                    </apiSources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

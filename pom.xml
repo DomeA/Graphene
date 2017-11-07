@@ -19,6 +19,7 @@
         <module>servers/cloud-tool/discovery-server</module>
         <module>servers/cloud-tool/monitor-server</module>
         <module>servers/micro-service/gis-process</module>
+        <module>servers/micro-service/h2</module>
     </modules>
 
     <dependencyManagement>
